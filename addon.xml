@@ -13,14 +13,7 @@
     <files>
         <filename plugin="addon">addon.php</filename>
         <folder>addons</folder>
+        <folder>language</folder>
     </files>
-    <config>
-        <fields name="params">
-                <fieldset name="basic">
-                    <field name="lat" type="text" size="80" default="" label="Latitude" description="Latitude of the location"/>
-                    <field name="lng" type="text" size="80" default="" label="Longitude" description="Longitude of the location"/>
-                </fieldset>
-        </fields>
-    </config>
 
 </extension>

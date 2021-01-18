@@ -15,7 +15,7 @@ SpAddonsConfig::addonConfig(
         'addon_name'=>'sample_addon',
         'title'=> 'Sample Addon',
         'desc'=> 'Sample addon for SP Page Builder',
-        'icon'=>JURI::root() . 'plugins/sppagebuilder/demo/addons/sample_addon/assets/images/icon.png',
+        'icon'=>JURI::root() . 'plugins/sppagebuilder/addon/addons/sample_addon/assets/images/icon.png',
         'category'=>'MyAddons',
         'attr'=>array(
             'general' => array(
@@ -86,6 +86,18 @@ SpAddonsConfig::addonConfig(
                     'title'=>'Padding',
                     'std' => '0px 0px 0px 0px',
                     'responsive'=>true
+                ),
+                'latitude'=>array(
+                    'type'=>'text',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_LAT'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_LAT_DESC'),
+                    'std'=>  '000000000'
+                ),
+                'longitude'=>array(
+                    'type'=>'text',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_LNG'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_LNG_DESC'),
+                    'std'=>  '000000000'
                 ),
 
                 // Content
