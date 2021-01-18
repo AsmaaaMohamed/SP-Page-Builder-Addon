@@ -87,24 +87,28 @@ SpAddonsConfig::addonConfig(
                     'std' => '0px 0px 0px 0px',
                     'responsive'=>true
                 ),
-                'latitude'=>array(
-                    'type'=>'text',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_LAT'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_LAT_DESC'),
-                    'std'=>  '000000000'
-                ),
-                'longitude'=>array(
-                    'type'=>'text',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_LNG'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_LNG_DESC'),
-                    'std'=>  '000000000'
-                ),
-
-                // Content
-                'content'=>array(
-                    'type'=>'editor',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_GLOBAL_CONTENT'),
-                    'std'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing erat eget risus sollicitudin pellentesque et non erat. Maecenas nibh dolor, malesuada et bibendum a, sagittis accumsan ipsum. Pellentesque ultrices ultrices sapien, nec tincidunt nunc posuere ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque tristique dolor vitae tincidunt. Aenean quis massa uada mi elementum elementum. Nec sapien convallis vulputate rhoncus vel dui.'
+                'location'=>array(
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
+                    'attr'=>array(
+                        'title'=>array(
+                            'type'=>'text',
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION_DESC'),
+                            'std'=>'Location Title',
+                        ),
+                        'latitude'=>array(
+                            'type'=>'text',
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LAT'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LAT_DESC'),
+                            'std'=>  '000000000 00000'
+                        ),
+                        'longitude'=>array(
+                            'type'=>'text',
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LNG'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LNG_DESC'),
+                            'std'=>  '000000000 0000'
+                        ),
+                    ),
                 ),
 
                 'class'=>array(

@@ -13,7 +13,10 @@
     <files>
         <filename plugin="addon">addon.php</filename>
         <folder>addons</folder>
-        <folder>language</folder>
     </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_addon.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_addon.sys.ini</language>
+    </languages>
 
 </extension>

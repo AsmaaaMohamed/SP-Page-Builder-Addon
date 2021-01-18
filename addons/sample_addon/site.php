@@ -16,7 +16,6 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
         $title      = (isset($this->addon->settings->title) && $this->addon->settings->title) ? $this->addon->settings->title : '';
         $addon_link = (isset($this->addon->settings->addon_link) && $this->addon->settings->addon_link) ? $this->addon->settings->addon_link : '';
         $addon_icon = (isset($this->addon->settings->addon_icon) && $this->addon->settings->addon_icon) ? $this->addon->settings->addon_icon : '';
-        $content    = (isset($this->addon->settings->content) && $this->addon->settings->content) ? $this->addon->settings->content : '';
 
         $output = '';
         $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '">';
@@ -29,11 +28,6 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
             $output .= '</h1>';
         }
 
-        if($content) {
-            $output .= '<div class="sppb-addon-content">';
-            $output .= $content;
-            $output .= '</div>';
-        }
         $output .= '</div>';
 
         return $output;
@@ -100,79 +94,6 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     }
 
     public static function getTemplate() {
-        $output = '
-        <#
-            var margin = window.getMarginPadding(data.addon_margin, "margin");
-            var padding = window.getMarginPadding(data.addon_padding, "padding");
-        #>
-        <style type="text/css">
-            #sppb-addon-{{ data.id }} .sppb-addon-title{
-                <# if(_.isObject(data.addon_fontsize)){ #>
-                    font-size: {{ data.addon_fontsize.md }}px;
-                <# } #>
-
-                <# if(_.isObject(data.addon_lineheight)){ #>
-                    line-height: {{ data.addon_lineheight.md }}px;
-                <# } #>
-
-                <# if(_.isObject(data.addon_font_style) && data.addon_font_style.underline) { #>
-                    text-decoration: underline;
-                <# } #>
-
-                <# if(_.isObject(data.addon_font_style) && data.addon_font_style.italic) { #>
-                    font-style: italic;
-                <# } #>
-
-                <# if(_.isObject(data.addon_font_style) && data.addon_font_style.uppercase) { #>
-                    text-transform: uppercase;
-                <# } #>
-
-                <# if(_.isObject(data.addon_font_style) && data.addon_font_style.weight) { #>
-                    font-weight: {{ data.addon_font_style.weight }};
-                <# } #>
-                
-                <# if(_.isObject(margin)){ #>
-                    {{{ padding.md }}}
-                    {{{ margin.md }}}
-                <# } #>
-            }
-
-            @media (min-width: 768px) and (max-width: 991px) {
-                #sppb-addon-{{ data.id }} .sppb-addon-title{
-                    <# if(_.isObject(margin)){ #>
-                        {{{ padding.sm }}}
-                        {{{ margin.sm }}}
-                    <# } #>
-                }
-            }
-            @media (max-width: 767px) {
-                #sppb-addon-{{ data.id }} .sppb-addon-title{
-                    <# if(_.isObject(margin)){ #>
-                        {{{ padding.xs }}}
-                        {{{ margin.xs }}}
-                    <# } #>
-                }
-            }
-        </style>
-        <div class="sppb-addon sppb-addon-hello-world {{ data.class }}">
-            <h1 class="sppb-addon-title">
-                <# if(!_.isEmpty(data.addon_link)){ #>
-                    <a href="/{{ data.addon_link }}">
-                <# } #>
-                <# if(!_.isEmpty(data.addon_icon)){ #>
-                    <i class="fa {{ data.addon_icon }}"></i> 
-                <# } #>
-                {{{ data.title }}}
-                <# if(!_.isEmpty(data.addon_link)){ #>
-                    </a>
-                <# } #>
-            </h1>
-            <# if(!_.isEmpty(data.content)){ #>
-                <div id="addon-sample-{{data.id}}" class="sppb-addon-content sp-editable-content" data-id={{data.id}} data-fieldName="content">{{{ data.content }}}</div>
-            <# } #>
-        </div>
-        ';
-
-        return $output;
+        return false;
     }
 }
