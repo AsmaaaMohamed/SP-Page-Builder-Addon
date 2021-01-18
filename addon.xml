@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="plugin" group="sppagebuilder" method="upgrade">
+    <name>Map Addon Plugin - SP Page Builder</name>
+    <author>JoomReem</author>
+    <creationDate>17 Jan 2021</creationDate>
+    <authorEmail>admin@joomreem.com</authorEmail>
+    <authorUrl>http://www.example.org</authorUrl>
+    <copyright>Copyright info</copyright>
+    <license>License info</license>
+    <description>MAp addon plugin for SP Page Builder</description>
+    <version>1.0</version>
+
+    <files>
+        <filename plugin="addon">addon.php</filename>
+        <folder>addons</folder>
+    </files>
+    <config>
+        <fields name="params">
+                <fieldset name="basic">
+                    <field name="lat" type="text" size="80" default="" label="Latitude" description="Latitude of the location"/>
+                    <field name="lng" type="text" size="80" default="" label="Longitude" description="Longitude of the location"/>
+                </fieldset>
+        </fields>
+    </config>
+
+</extension>
