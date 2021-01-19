@@ -87,6 +87,12 @@ SpAddonsConfig::addonConfig(
                     'std' => '0px 0px 0px 0px',
                     'responsive'=>true
                 ),
+                'map_height'=>array(
+                    'type'=>'slider',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
+                    'std'=>100,
+                    'max'=>2000,
+                ),
                 'location'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
                     'attr'=>array(
@@ -115,6 +121,12 @@ SpAddonsConfig::addonConfig(
                     'type'=>'text',
                     'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
                     'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
+                    'std'=>''
+                ),
+                'id'=>array(
+                    'type'=>'text',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ID'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ID_DESC'),
                     'std'=>''
                 ),
 
