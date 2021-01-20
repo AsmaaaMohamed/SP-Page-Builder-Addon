@@ -10,33 +10,24 @@
 defined('_JEXEC') or die('Restricted Aceess');
 
 class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
-
+    protected  $map_id ='';
     public function render() {
         $class      = (isset($this->addon->settings->class) && $this->addon->settings->class) ? ' ' . $this->addon->settings->class : '';
-        $id      = (isset($this->addon->settings->id) && $this->addon->settings->id) ? ' ' . $this->addon->settings->id : '';
-        $title      = (isset($this->addon->settings->title) && $this->addon->settings->title) ? $this->addon->settings->title : '';
-        $addon_link = (isset($this->addon->settings->addon_link) && $this->addon->settings->addon_link) ? $this->addon->settings->addon_link : '';
-        $addon_icon = (isset($this->addon->settings->addon_icon) && $this->addon->settings->addon_icon) ? $this->addon->settings->addon_icon : '';
+        $this->map_id = 'sppb-addon-'.$this->addon->id;
 
         $output = '';
-        $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '" id ="'.$id.'">';
-        if($title) {
-            $output .= '<h1 class="sppb-addon-title">';
-            $output .= (!empty($addon_link)) ? '<a href="' . $addon_link . '">' : '';
-            $output .= (!empty($addon_icon)) ? '<i class="fa ' . $addon_icon . '"></i> ' : '';
-            $output .= (!empty($title)) ? $title : '';
-            $output .= (!empty($addon_link)) ? '</a>' : '';
-            $output .= '</h1>';
-        }
+        $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '" id ="'.$this->map_id.'">';
+
 
         $output .= '</div>';
 
         return $output;
     }
     public function js() {
-        $id = (isset($this->addon->settings->id) && $this->addon->settings->id) ? ' ' . $this->addon->settings->id : '';
-        if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && count($this->addon->settings->sp_location_item)){
-            $cordints = array();
+        $location_count = count($this->addon->settings->sp_location_item);
+        $cordints = array();
+        if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
+
             foreach ($this->addon->settings->sp_location_item as $key => $item) {
 
                 if(isset($item->latitude) && $item->latitude != '' && isset($item->longitude) && $item->longitude != '') {
@@ -48,7 +39,7 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
                 let infoWindow;
                 
                 function initMap() {
-                  map = new google.maps.Map(document.getElementById('".$id."'), {
+                  map = new google.maps.Map(document.getElementById('".$this->map_id."'), {
                     zoom: 5,
                     center: { lat: 24.886, lng: -70.268 },
                     mapTypeId: \"terrain\",
@@ -59,6 +50,12 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
                 { lat: 18.466, lng: -66.118 },
                 { lat: 32.321, lng: -64.757 },
               ];
+              var coords = [];
+                for (i= 0;i<".$location_count.";i=i+1)
+                {
+                   
+                   
+                }
                   // Construct the polygon.
                   const bermudaTriangle = new google.maps.Polygon({
                     paths: triangleCoords,
@@ -102,63 +99,29 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     }
 
     public function css() {
-        $addon_id = '#sppb-addon-' . $this->addon->id;
+        $addon_id = '#'.$this->map_id;
+        $height = '';
+        $height_sm='';
+        $height_xs='';
 
-        $style = '';
-        $style_sm = '';
-        $style_xs = '';
+        $height  .= (isset($this->addon->settings->map_height) && $this->addon->settings->map_height) ? 'height: ' . $this->addon->settings->map_height  . 'px; ' : '100px';
+        $height_sm .= (isset($this->addon->settings->map_height_sm) && $this->addon->settings->map_height_sm) ? 'height: ' . $this->addon->settings->map_height_sm  . 'px; ' : '';
+        $height_xs .= (isset($this->addon->settings->map_height_xs) && $this->addon->settings->map_height_xs) ? 'height: ' . $this->addon->settings->map_height_xs  . 'px; ' : '';
 
-        $style .= (isset($this->addon->settings->addon_margin) && $this->addon->settings->addon_margin) ?  SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_margin, 'margin') : '';
-        $style_sm .= (isset($this->addon->settings->addon_margin_sm) && $this->addon->settings->addon_margin_sm) ?  SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_margin_sm, 'margin') : '';
-        $style_xs .= (isset($this->addon->settings->addon_margin_xs) && $this->addon->settings->addon_margin_xs) ?  SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_margin_xs, 'margin') : '';
-
-        $style .= (isset($this->addon->settings->addon_padding) && $this->addon->settings->addon_padding) ? SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_padding, 'padding') : '';
-        $style_sm .= (isset($this->addon->settings->addon_padding_sm) && $this->addon->settings->addon_padding_sm) ? SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_padding_sm, 'padding') : '';
-        $style_xs .= (isset($this->addon->settings->addon_padding_xs) && $this->addon->settings->addon_padding_xs) ? SppagebuilderHelperSite::getPaddingMargin($this->addon->settings->addon_padding_xs, 'padding') : '';
-
-        $style .= (isset($this->addon->settings->addon_fontsize) && $this->addon->settings->addon_fontsize) ? 'font-size: ' . $this->addon->settings->addon_fontsize  . 'px; ' : '';
-        $style_sm .= (isset($this->addon->settings->addon_fontsize_sm) && $this->addon->settings->addon_fontsize_sm) ? 'font-size: ' . $this->addon->settings->addon_fontsize_sm  . 'px; ' : '';
-        $style_xs .= (isset($this->addon->settings->addon_fontsize_xs) && $this->addon->settings->addon_fontsize_xs) ? 'font-size: ' . $this->addon->settings->addon_fontsize_xs  . 'px; ' : '';
-
-        $style .= (isset($this->addon->settings->addon_lineheight) && $this->addon->settings->addon_lineheight) ? 'line-height: ' . $this->addon->settings->addon_lineheight  . 'px; ' : '';
-        $style_sm .= (isset($this->addon->settings->addon_lineheight_sm) && $this->addon->settings->addon_lineheight_sm) ? 'line-height: ' . $this->addon->settings->addon_lineheight_sm  . 'px; ' : '';
-        $style_xs .= (isset($this->addon->settings->addon_lineheight_xs) && $this->addon->settings->addon_lineheight_xs) ? 'line-height: ' . $this->addon->settings->addon_lineheight_xs  . 'px; ' : '';
-
-        $style .= (isset($this->addon->settings->map_height) && $this->addon->settings->map_height) ? 'height: ' . $this->addon->settings->map_height  . 'px; ' : '100px';
-        $style_sm .= (isset($this->addon->settings->map_height_sm) && $this->addon->settings->map_height_sm) ? 'height: ' . $this->addon->settings->map_height_sm  . 'px; ' : '';
-        $style_xs .= (isset($this->addon->settings->map_height_xs) && $this->addon->settings->map_height_xs) ? 'height: ' . $this->addon->settings->map_height_xs  . 'px; ' : '';
-
-        // Font Style
-        if(isset($addon->settings->addon_font_style->underline) && $addon->settings->addon_font_style->underline) {
-            $style .= 'text-decoration: underline;';
-        }
-
-        if(isset($addon->settings->addon_font_style->italic) && $addon->settings->addon_font_style->italic) {
-            $style .= 'font-style: italic;';
-        }
-
-        if(isset($addon->settings->addon_font_style->uppercase) && $addon->settings->addon_font_style->uppercase) {
-            $style .= 'text-transform: uppercase;';
-        }
-
-        if(isset($addon->settings->addon_font_style->weight) && $addon->settings->addon_font_style->weight) {
-            $style .= 'font-weight: ' . $addon->settings->addon_font_style->weight . ';';
-        }
 
         $css = '';
-        if ($style) {
-            $css .= $addon_id . ' .sppb-addon-title {' . $style . '}';
-        }
 
-        if ($style_sm) {
+        if($height){
+            $css .= $addon_id . '{' . $height . '}';
+        }
+        if($height_sm){
             $css .= '@media (min-width: 768px) and (max-width: 991px) {';
-            $css .= $addon_id . ' .sppb-addon-title {' . $style_sm . '}';
+            $css .= $addon_id . '{' . $height_sm . '}';
             $css .= '}';
         }
-
-        if ($style_xs) {
-            $css .= '@media (max-width: 767px) {';
-            $css .= $addon_id . ' .sppb-addon-title {' . $style_xs . '}';
+        if($height_xs){
+            $css .= '@media (min-width: 768px) and (max-width: 991px) {';
+            $css .= $addon_id . '{' . $height_xs . '}';
             $css .= '}';
         }
 

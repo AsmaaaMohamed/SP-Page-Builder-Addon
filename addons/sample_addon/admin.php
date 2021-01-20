@@ -25,75 +25,13 @@ SpAddonsConfig::addonConfig(
                     'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ADMIN_LABEL_DESC'),
                     'std'=> ''
                 ),
-                // Title
-                'title'=>array(
-                    'type'=>'textarea',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_TITLE_DESC'),
-                    'std'=>  'This is sample title'
-                ),
-                'addon_icon'=>array(
-                    'type'=>'icon',
-                    'title'=>'Icon',
-                    'depends'=>array(array('title', '!=', '')),
-                ),
-                'addon_link'=>array(
-                    'type'=>'media',
-                    'format'=>'attachment',
-                    'title'=>'Link',
-                    'placeholder'=>'http://',
-                    'std'=>'',
-                    'hide_preview'=>true,
-                ),
-                'addon_font_family'=>array(
-                    'type'=>'fonts',
-                    'title'=>'Font Family',
-                    'depends'=>array(array('title', '!=', '')),
-                    'selector'=> array(
-                        'type'=>'font',
-                        'font'=>'{{ VALUE }}',
-                        'css'=>'.sppb-addon-title { font-family: {{ VALUE }}; }'
-                    )
-                ),
-                'addon_fontsize'=>array(
-                    'type'=>'slider',
-                    'title'=>'Font Size',
-                    'std'=>'',
-                    'max'=>400,
-                    'responsive'=>true
-                ),
-                'addon_lineheight'=>array(
-                    'type'=>'slider',
-                    'title'=>'Line Height',
-                    'std'=>'',
-                    'max'=>400,
-                    'responsive'=>true
-                ),
-
-                'addon_font_style'=>array(
-                    'type'=>'fontstyle',
-                    'title'=>'Font Style',
-                    'depends'=>array(array('title', '!=', '')),
-                ),
-                'addon_margin'=>array(
-                    'type'=>'margin',
-                    'title'=>'Margin',
-                    'std' => '0px 0px 30px 0px',
-                    'responsive'=>true
-                ),
-                'addon_padding'=>array(
-                    'type'=>'padding',
-                    'title'=>'Padding',
-                    'std' => '0px 0px 0px 0px',
-                    'responsive'=>true
-                ),
                 'map_height'=>array(
                     'type'=>'slider',
                     'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
                     'std'=>100,
                     'max'=>2000,
                 ),
-                'location'=>array(
+                'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
                     'attr'=>array(
                         'title'=>array(
@@ -121,12 +59,6 @@ SpAddonsConfig::addonConfig(
                     'type'=>'text',
                     'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
                     'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
-                    'std'=>''
-                ),
-                'id'=>array(
-                    'type'=>'text',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_ID'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_ID_DESC'),
                     'std'=>''
                 ),
 
