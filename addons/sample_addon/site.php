@@ -8,13 +8,17 @@
 
 //no direct accees
 defined('_JEXEC') or die('Restricted Aceess');
+use Joomla\CMS\Factory;
 
 class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     protected  $map_id ='';
     public function render() {
+        $document = Factory::getDocument();
+        $document->addScript("https://polyfill.io/v3/polyfill.min.js?features=default");
+
         $class      = (isset($this->addon->settings->class) && $this->addon->settings->class) ? ' ' . $this->addon->settings->class : '';
         $this->map_id = 'sppb-addon-'.$this->addon->id;
-
+        $document->addScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyANP28FGbJ_v3xkK70yJjY01mTSiWkNR18&callback=initMap&libraries=&v=weekly",array(), array("defer" => "defer"));
         $output = '';
         $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '" id ="'.$this->map_id.'">';
 
