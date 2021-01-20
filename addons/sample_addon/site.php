@@ -25,15 +25,20 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     }
     public function js() {
         $location_count = count($this->addon->settings->sp_location_item);
-        $cordints = array();
+        $cordints = '[';
         if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
-
+            $latSum =0;
+            $lngSum = 0;
             foreach ($this->addon->settings->sp_location_item as $key => $item) {
 
                 if(isset($item->latitude) && $item->latitude != '' && isset($item->longitude) && $item->longitude != '') {
-                    $cordints[]= array( lat=> $item->latitude, lng=>$item->longitude);
+                    $cordints .=  "{ lat:". $item->latitude.", lng:".$item->longitude."},";
+                    $latSum += $item->latitude;
+                    $lngSum += $item->longitude;
                 }
             }
+            $cordints .= ']';
+            $centr = "{lat:".$latSum/$location_count.",lng:".$lngSum/$location_count."}";
         }
         $js = "let map;
                 let infoWindow;
@@ -41,21 +46,12 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
                 function initMap() {
                   map = new google.maps.Map(document.getElementById('".$this->map_id."'), {
                     zoom: 5,
-                    center: { lat: 24.886, lng: -70.268 },
+                    center: ".$centr.",
                     mapTypeId: \"terrain\",
                   });
                   // Define the LatLng coordinates for the polygon.
-                  const triangleCoords = [
-                { lat: 25.774, lng: -80.19 },
-                { lat: 18.466, lng: -66.118 },
-                { lat: 32.321, lng: -64.757 },
-              ];
-              var coords = [];
-                for (i= 0;i<".$location_count.";i=i+1)
-                {
-                   
-                   
-                }
+                  const triangleCoords = ".$cordints.";
+             
                   // Construct the polygon.
                   const bermudaTriangle = new google.maps.Polygon({
                     paths: triangleCoords,
