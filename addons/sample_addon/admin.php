@@ -34,7 +34,7 @@ SpAddonsConfig::addonConfig(
                 ),
                 'map_zoom'=>array(
                     'type'=>'slider',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
+                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_ZOOM'),
                     'std'=>10,
                     'max'=>20,
                 ),
