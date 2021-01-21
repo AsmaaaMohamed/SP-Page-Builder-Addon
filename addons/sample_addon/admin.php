@@ -30,6 +30,13 @@ SpAddonsConfig::addonConfig(
                     'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
                     'std'=>100,
                     'max'=>2000,
+                    'responsive' => true,
+                ),
+                'map_zoom'=>array(
+                    'type'=>'slider',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
+                    'std'=>10,
+                    'max'=>20,
                 ),
                 'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),

@@ -15,10 +15,10 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     public function render() {
         $document = Factory::getDocument();
         $document->addScript("https://polyfill.io/v3/polyfill.min.js?features=default");
-
+        $document->addScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyANP28FGbJ_v3xkK70yJjY01mTSiWkNR18&callback=initMap&libraries=&v=weekly",array(), array("defer" => "defer"));
         $class      = (isset($this->addon->settings->class) && $this->addon->settings->class) ? ' ' . $this->addon->settings->class : '';
         $this->map_id = 'sppb-addon-'.$this->addon->id;
-        $document->addScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyANP28FGbJ_v3xkK70yJjY01mTSiWkNR18&callback=initMap&libraries=&v=weekly",array(), array("defer" => "defer"));
+
         $output = '';
         $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '" id ="'.$this->map_id.'">';
 
@@ -29,6 +29,7 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     }
     public function js() {
         $location_count = count($this->addon->settings->sp_location_item);
+        $map_zoom      = (isset($this->addon->settings->map_zoom) && $this->addon->settings->map_zoom) ? $this->addon->settings->map_zoom : '10';
         $cordints = '[';
         if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
             $latSum =0;
@@ -49,7 +50,7 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
                 
                 function initMap() {
                   map = new google.maps.Map(document.getElementById('".$this->map_id."'), {
-                    zoom: 5,
+                    zoom: ".$map_zoom.",
                     center: ".$centr.",
                     mapTypeId: \"terrain\",
                   });
