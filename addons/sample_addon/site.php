@@ -14,16 +14,12 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     protected  $map_id ='';
     public function render() {
         $document = Factory::getDocument();
-        $document->addScript("https://polyfill.io/v3/polyfill.min.js?features=default");
-        $document->addScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyANP28FGbJ_v3xkK70yJjY01mTSiWkNR18&callback=initMap&libraries=&v=weekly",array(), array("defer" => "defer"));
+        $document->addStyleSheet("https://unpkg.com/leaflet@1.3.4/dist/leaflet.css", array(), ['integrity' => 'sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==','crossorigin' => '']);
+        $document->addScript("https://unpkg.com/leaflet@1.3.4/dist/leaflet.js", array(), ['integrity' => 'sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==','crossorigin' => '']);
         $class      = (isset($this->addon->settings->class) && $this->addon->settings->class) ? ' ' . $this->addon->settings->class : '';
         $this->map_id = 'sppb-addon-'.$this->addon->id;
 
         $output = '';
-        $output .= '<div class="sppb-addon sppb-addon-sample' . $class . '" id ="'.$this->map_id.'">';
-
-
-        $output .= '</div>';
 
         return $output;
     }
@@ -45,57 +41,17 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
             $cordints .= ']';
             $centr = "{lat:".$latSum/$location_count.",lng:".$lngSum/$location_count."}";
         }
-        $js = "let map;
-                let infoWindow;
-                
-                function initMap() {
-                  map = new google.maps.Map(document.getElementById('".$this->map_id."'), {
-                    zoom: ".$map_zoom.",
-                    center: ".$centr.",
-                    mapTypeId: \"terrain\",
-                  });
-                  // Define the LatLng coordinates for the polygon.
-                  const triangleCoords = ".$cordints.";
-             
-                  // Construct the polygon.
-                  const bermudaTriangle = new google.maps.Polygon({
-                    paths: triangleCoords,
-                    strokeColor: \"#FF0000\",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 3,
-                    fillColor: \"#FF0000\",
-                    fillOpacity: 0.35,
-                  });
-                  bermudaTriangle.setMap(map);
-                  // Add a listener for the click event.
-                  bermudaTriangle.addListener(\"click\", showArrays);
-                  infoWindow = new google.maps.InfoWindow();
-                }
-                
-                function showArrays(event) {
-                  // Since this polygon has only one path, we can call getPath() to return the
-                  // MVCArray of LatLngs.
-                  const polygon = this;
-                  const vertices = polygon.getPath();
-                  let contentString =
-                    \"<b>Bermuda Triangle polygon</b><br>\" +
-                    \"Clicked location: <br>\" +
-                    event.latLng.lat() +
-                    \",\" +
-                    event.latLng.lng() +
-                    \"<br>\";
-
-                  // Iterate over the vertices.
-                  for (let i = 0; i < vertices.getLength(); i++) {
-                    const xy = vertices.getAt(i);
-                    contentString +=
-                      \"<br>\" + \"Coordinate \" + i + \":<br>\" + xy.lat() + \",\" + xy.lng();
-                  }
-                  // Replace the info window's content and position.
-                  infoWindow.setContent(contentString);
-                  infoWindow.setPosition(event.latLng);
-                  infoWindow.open(map);
-                }";
+        $js = "window.onload = function () {      
+           var mymap".$this->addon->id." = L.map('".$this->map_id."').setView([51.505, -0.09], 13);
+           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
+}).addTo(mymap".$this->addon->id.");
+var marker = L.marker([51.5, -0.09]).addTo(mymap".$this->addon->id.");
+var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+]).addTo(mymap".$this->addon->id.");}";
         return $js;
     }
 
