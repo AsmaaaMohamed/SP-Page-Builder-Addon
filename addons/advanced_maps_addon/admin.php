@@ -12,10 +12,10 @@ defined('_JEXEC') or die('Restricted Aceess');
 SpAddonsConfig::addonConfig(
     array(
         'type'=>'content',
-        'addon_name'=>'sample_addon',
-        'title'=> 'Sample Addon',
-        'desc'=> 'Sample addon for SP Page Builder',
-        'icon'=>JURI::root() . 'plugins/sppagebuilder/addon/addons/sample_addon/assets/images/icon.png',
+        'addon_name'=>'advanced_maps_addon',
+        'title'=> 'Advanced Maps Addon',
+        'desc'=> 'SP Page Builder addon to display advanced maps using OSM',
+        'icon'=>JURI::root() . 'plugins/sppagebuilder/addon/addons/advanced_maps_addon/assets/images/icon.png',
         'category'=>'MyAddons',
         'attr'=>array(
             'general' => array(
@@ -27,14 +27,14 @@ SpAddonsConfig::addonConfig(
                 ),
                 'map_height'=>array(
                     'type'=>'slider',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_HEIGHT'),
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GMAP_HEIGHT'),
                     'std'=>100,
                     'max'=>2000,
                     'responsive' => true,
                 ),
                 'map_zoom'=>array(
                     'type'=>'slider',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_MAP_ZOOM'),
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GMAP_ZOOM'),
                     'std'=>10,
                     'max'=>20,
                 ),
@@ -49,25 +49,25 @@ SpAddonsConfig::addonConfig(
                     'std'=>'true',
                 ),
                 'sp_location_item'=>array(
-                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LOCATION'),
                     'attr'=>array(
                         'title'=>array(
                             'type'=>'text',
-                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
-                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION_DESC'),
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LOCATION'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LOCATION_DESC'),
                             'std'=>'Location Title',
                         ),
                         'latitude'=>array(
                             'type'=>'text',
-                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LAT'),
-                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LAT_DESC'),
-                            'std'=>  '000000000 00000'
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LAT'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LAT_DESC'),
+                            'std'=>  '00.00'
                         ),
                         'longitude'=>array(
                             'type'=>'text',
-                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LNG'),
-                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LNG_DESC'),
-                            'std'=>  '000000000 0000'
+                            'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LNG'),
+                            'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LNG_DESC'),
+                            'std'=>  '00.00'
                         ),
                     ),
                 ),

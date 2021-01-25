@@ -10,13 +10,12 @@
 defined('_JEXEC') or die('Restricted Aceess');
 use Joomla\CMS\Factory;
 
-class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
+class SppagebuilderAdvancedMaps_addon extends SppagebuilderAddons {
     protected  $map_id ='';
     public function render() {
         $document = Factory::getDocument();
         $document->addStyleSheet("https://unpkg.com/leaflet@1.3.4/dist/leaflet.css", array(), ['integrity' => 'sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==','crossorigin' => '']);
         $document->addScript("https://unpkg.com/leaflet@1.3.4/dist/leaflet.js", array(), ['integrity' => 'sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==','crossorigin' => '']);
-        $class      = (isset($this->addon->settings->class) && $this->addon->settings->class) ? ' ' . $this->addon->settings->class : '';
         $this->map_id = 'sppb-addon-'.$this->addon->id;
 
         $output = '';
