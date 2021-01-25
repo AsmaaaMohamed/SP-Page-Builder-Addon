@@ -33,25 +33,21 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
             foreach ($this->addon->settings->sp_location_item as $key => $item) {
 
                 if(isset($item->latitude) && $item->latitude != '' && isset($item->longitude) && $item->longitude != '') {
-                    $cordints .=  "{ lat:". $item->latitude.", lng:".$item->longitude."},";
+                    $cordints .=  "[". $item->latitude.",".$item->longitude."],";
                     $latSum += $item->latitude;
                     $lngSum += $item->longitude;
                 }
             }
             $cordints .= ']';
-            $centr = "{lat:".$latSum/$location_count.",lng:".$lngSum/$location_count."}";
+            $centr = "[".$latSum/$location_count.",".$lngSum/$location_count."]";
         }
         $js = "window.onload = function () {      
-           var mymap".$this->addon->id." = L.map('".$this->map_id."').setView([51.505, -0.09], 13);
+           var mymap = L.map('".$this->map_id."').setView(".$centr.", ".$map_zoom.");
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
-}).addTo(mymap".$this->addon->id.");
-var marker = L.marker([51.5, -0.09]).addTo(mymap".$this->addon->id.");
-var polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
-]).addTo(mymap".$this->addon->id.");}";
+}).addTo(mymap);
+var marker = L.marker(".$centr.").addTo(mymap);
+var polygon = L.polygon(".$cordints.").addTo(mymap);}";
         return $js;
     }
 
