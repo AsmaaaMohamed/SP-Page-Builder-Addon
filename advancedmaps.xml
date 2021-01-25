@@ -11,7 +11,7 @@
     <version>1.0.0</version>
 
     <files>
-        <filename plugin="addon">advancedmaps.php</filename>
+        <filename plugin="advancedmaps">advancedmaps.php</filename>
         <folder>addons</folder>
     </files>
     <languages folder="language">

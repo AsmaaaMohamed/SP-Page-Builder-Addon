@@ -9,6 +9,6 @@
 //no direct accees
 defined('_JEXEC') or die('Restricted Aceess');
 
-class PlgSppagebuilderAddon extends JPlugin {
+class PlgSppagebuilderAdvancedMaps extends JPlugin {
     protected $autoloadLanguage = true;
 }
