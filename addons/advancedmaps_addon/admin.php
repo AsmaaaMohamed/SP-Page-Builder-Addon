@@ -12,11 +12,11 @@ defined('_JEXEC') or die('Restricted Aceess');
 SpAddonsConfig::addonConfig(
     array(
         'type'=>'content',
-        'addon_name'=>'advanced_maps_addon',
+        'addon_name'=>'advancedmaps',
         'title'=> 'Advanced Maps Addon',
         'desc'=> 'SP Page Builder addon to display advanced maps using OSM',
-        'icon'=>JURI::root() . 'plugins/sppagebuilder/addon/addons/advanced_maps_addon/assets/images/icon.png',
-        'category'=>'MyAddons',
+        'icon'=>JURI::root() . 'plugins/sppagebuilder/advancedmaps/addons/advancedmaps_addon/assets/images/icon.png',
+        'category'=>'JoomReem Addons',
         'attr'=>array(
             'general' => array(
                 'admin_label'=>array(

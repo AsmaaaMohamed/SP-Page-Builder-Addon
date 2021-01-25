@@ -10,7 +10,7 @@
 defined('_JEXEC') or die('Restricted Aceess');
 use Joomla\CMS\Factory;
 
-class SppagebuilderAddonAdvancedMaps_addon extends SppagebuilderAddons {
+class SppagebuilderAddonAdvanced_Maps extends SppagebuilderAddons {
     protected  $map_id ='';
     public function render() {
         $document = Factory::getDocument();
