@@ -38,6 +38,16 @@ SpAddonsConfig::addonConfig(
                     'std'=>10,
                     'max'=>20,
                 ),
+                'map_scroll'=>array(
+                    'type'=>'select',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_GMAP_DISABLE_MOUSE_SCROLL'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_GMAP_DISABLE_MOUSE_SCROLL_DESC'),
+                    'values'=>array(
+                        'false'=>JText::_('JYES'),
+                        'true'=>JText::_('JNO'),
+                    ),
+                    'std'=>'true',
+                ),
                 'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_LOCATION'),
                     'attr'=>array(

@@ -26,6 +26,7 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
     public function js() {
         $location_count = count($this->addon->settings->sp_location_item);
         $map_zoom      = (isset($this->addon->settings->map_zoom) && $this->addon->settings->map_zoom) ? $this->addon->settings->map_zoom : '10';
+        $map_scroll      = (isset($this->addon->settings->map_scroll) && $this->addon->settings->map_scroll) ? $this->addon->settings->map_scroll : 'true';
         $cordints = '[';
         if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
             $latSum =0;
@@ -41,13 +42,16 @@ class SppagebuilderAddonSample_addon extends SppagebuilderAddons {
             $cordints .= ']';
             $centr = "[".$latSum/$location_count.",".$lngSum/$location_count."]";
         }
-        $js = "window.onload = function () {      
+        $js = "window.addEventListener('load', function() {      
            var mymap = L.map('".$this->map_id."').setView(".$centr.", ".$map_zoom.");
            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
-}).addTo(mymap);
-var marker = L.marker(".$centr.").addTo(mymap);
-var polygon = L.polygon(".$cordints.").addTo(mymap);}";
+            attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
+            }).addTo(mymap);
+            var marker = L.marker(".$centr.").addTo(mymap);
+            var polygon = L.polygon(".$cordints.").addTo(mymap);
+            if(".$map_scroll." === false)
+                mymap.scrollWheelZoom.disable();
+                });";
         return $js;
     }
 
