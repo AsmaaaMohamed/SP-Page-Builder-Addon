@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.8" type="plugin" group="sppagebuilder" method="upgrade">
-    <name>Advanced Maps Addon - SP Page Builder</name>
+    <name>PLG_SPPAGEBUILDER_ADVANCED_MAPS_NAME</name>
     <author>JoomReem</author>
     <creationDate>17 Jan 2021</creationDate>
     <authorEmail>admin@joomreem.com</authorEmail>
     <authorUrl>http://www.example.org</authorUrl>
     <copyright>Copyright (c) 2021 JoomReem. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>SP Page Builder addon to display advanced maps using OSM</description>
+    <description>PLG_SPPAGEBUILDER_ADVANCED_MAPS_DESC</description>
     <version>1.0.0</version>
 
     <files>
         <filename plugin="advancedmaps">advancedmaps.php</filename>
         <folder>addons</folder>
     </files>
-    <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.ini</language>
-        <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.sys.ini</language>
-    </languages>
-
+    <administration>
+        <languages folder="language/admin">
+            <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.ini</language>
+            <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.sys.ini</language>
+        </languages>
+    </administration>
 </extension>

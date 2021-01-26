@@ -8,14 +8,19 @@
 
 //no direct accees
 defined('_JEXEC') or die('Restricted Aceess');
-
+$lang = JFactory::getLanguage();
+$extension = 'plg_sppagebuilder_advancedmaps';
+$base_dir = JPATH_ADMINISTRATOR;
+$language_tag = $lang->getTag();
+$reload = true;
+$lang->load($extension, $base_dir, $language_tag, $reload);
 SpAddonsConfig::addonConfig(
     array(
         'type'=>'content',
         'addon_name'=>'polygon_addon',
-        'title'=> 'Polygon Maps Addon',
-        'desc'=> 'SP Page Builder addon to display advanced maps using OSM',
-        'icon'=>JURI::root() . 'plugins/sppagebuilder/advancedmaps/addons/advancedmaps_addon/assets/images/icon.png',
+        'title'=> JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_ADDON_TITLE'),
+        'desc'=> JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_ADDON_DESC'),
+        'icon'=>JURI::root() . 'plugins/sppagebuilder/advancedmaps/addons/polygon_addon/assets/images/icon.png',
         'category'=>'JoomReem Addons',
         'attr'=>array(
             'general' => array(
@@ -49,7 +54,7 @@ SpAddonsConfig::addonConfig(
                     'std'=>'true',
                 ),
                 'sp_location_item'=>array(
-                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_LOCATION'),
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_POLYGON_TITLE'),
                     'attr'=>array(
                         'title'=>array(
                             'type'=>'text',
