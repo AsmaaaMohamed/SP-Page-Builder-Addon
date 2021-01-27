@@ -53,6 +53,12 @@ SpAddonsConfig::addonConfig(
                     ),
                     'std'=>'true',
                 ),
+                'popup_info'=>array(
+                    'type'=>'text',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO_DESC'),
+                    'std'=> ''
+                ),
                 'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_POLYGON_TITLE'),
                     'attr'=>array(
