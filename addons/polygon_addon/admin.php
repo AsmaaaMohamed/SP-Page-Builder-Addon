@@ -59,6 +59,19 @@ SpAddonsConfig::addonConfig(
                     'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO_DESC'),
                     'std'=> ''
                 ),
+                'map_type'=>array(
+                    'type'=>'select',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_TYPE'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_TYPE_DESC'),
+                    'values'=>array(
+                        'Default'=>'Default',
+                        'OpenCycleMap'=>'OpenCycleMap',
+                        'Humanitariane'=>'Humanitarian map',
+                        'Bike'=>'Hike &amp; Bike map',
+                        'Dark'=>'Dark Matter map',
+                    ),
+                    'std'=>'Default',
+                ),
                 'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_POLYGON_TITLE'),
                     'attr'=>array(

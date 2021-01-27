@@ -27,6 +27,7 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
         $map_zoom      = (isset($this->addon->settings->map_zoom) && $this->addon->settings->map_zoom) ? $this->addon->settings->map_zoom : '10';
         $map_scroll      = (isset($this->addon->settings->map_scroll) && $this->addon->settings->map_scroll) ? $this->addon->settings->map_scroll : 'true';
         $map_popup      = (isset($this->addon->settings->popup_info) && $this->addon->settings->popup_info) ? $this->addon->settings->popup_info : '';
+        $selectedmaptype = (isset($this->addon->settings->map_type) && $this->addon->settings->map_type) ? $this->addon->settings->map_type : 'Default';
         $cordints = '[';
         if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
             $latSum =0;
@@ -44,7 +45,13 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
         }
         $js = "window.addEventListener('load', function() {      
            var mymap = L.map('".$this->map_id."').setView(".$centr.", ".$map_zoom.");
-           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           let maptypes ={
+            'Default':'{s}.tile.osm.org',
+            'OpenCycleMap':'tile.thunderforest.com/cycle',
+            'Humanitariane':'a.tile.openstreetmap.fr/hot',
+            'Bike':'tiles.wmflabs.org/hikebike',
+            'Dark':'cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all'};
+           L.tileLayer('https://'+maptypes['".$selectedmaptype."']+'/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
             }).addTo(mymap);
             var marker = L.marker(".$centr.").addTo(mymap);
