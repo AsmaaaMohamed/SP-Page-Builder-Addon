@@ -67,7 +67,7 @@ SpAddonsConfig::addonConfig(
                         'Default'=>'Default',
                         'OpenCycleMap'=>'OpenCycleMap',
                         'Humanitariane'=>'Humanitarian map',
-                        'Bike'=>'Hike &amp; Bike map',
+                        'Bike'=>'Hike & Bike map',
                         'Dark'=>'Dark Matter map',
                     ),
                     'std'=>'Default',

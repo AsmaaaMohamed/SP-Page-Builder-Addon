@@ -14,10 +14,10 @@
         <filename plugin="advancedmaps">advancedmaps.php</filename>
         <folder>addons</folder>
     </files>
-    <administration>
+
         <languages folder="language/admin">
             <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.ini</language>
             <language tag="en-GB">en-GB/en-GB.plg_sppagebuilder_advancedmaps.sys.ini</language>
         </languages>
-    </administration>
+    
 </extension>
