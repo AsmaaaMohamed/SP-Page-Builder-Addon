@@ -59,6 +59,16 @@ SpAddonsConfig::addonConfig(
                     'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO_DESC'),
                     'std'=> ''
                 ),
+                'bound_color'=>array(
+                    'type'=>'color',
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_BOUND_COLOR'),
+                    'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_BOUND_COLOR_DESC'),
+                ),
+                'fill_color'=>array(
+                    'type'=>'color',
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_FILL_COLOR'),
+                    'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_FILL_COLOR_DESC'),
+                ),
                 'map_type'=>array(
                     'type'=>'select',
                     'title'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_TYPE'),
