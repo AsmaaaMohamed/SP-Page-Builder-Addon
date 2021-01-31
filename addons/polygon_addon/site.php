@@ -30,6 +30,21 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
         $selectedmaptype = (isset($this->addon->settings->map_type) && $this->addon->settings->map_type) ? $this->addon->settings->map_type : 'Default';
         $fill_color      = (isset($this->addon->settings->fill_color) && $this->addon->settings->fill_color) ? $this->addon->settings->fill_color : '#3388ff';
         $bound_color     = (isset($this->addon->settings->bound_color) && $this->addon->settings->bound_color) ? $this->addon->settings->bound_color : '#3388ff';
+        $height  = (isset($this->addon->settings->map_height) && $this->addon->settings->map_height) ?  $this->addon->settings->map_height . 'px '  : '100px';
+        $map_marker  = (isset($this->addon->settings->map_marker) && $this->addon->settings->map_marker) ?  $this->addon->settings->map_marker. '.png '  : 'blue-marker.png';
+        if (isset($map_marker) && substr($map_marker,0, 4)==='leaf') {
+            $icon = "iconUrl: '".JURI::root() ."plugins/sppagebuilder/advancedmaps/addons/assets/images/".$map_marker."',
+            shadowUrl: '".JURI::root() ."plugins/sppagebuilder/advancedmaps/addons/assets/images/leaf-shadow.png',
+            shadowSize:   [50, 64], // size of the shadow
+            iconAnchor:   [22, 94],
+            popupAnchor:  [-3, -76],
+            shadowAnchor: [4, 62],";
+        }
+        elseif (isset($map_marker) ){
+            $icon = "iconUrl: '".JURI::root() ."plugins/sppagebuilder/advancedmaps/addons/assets/images/".$map_marker."',
+            iconAnchor:   [12, 40],
+            popupAnchor:  [-3, -30],";
+        }
         $cordints = '[';
         if(isset($this->addon->settings->sp_location_item) && is_array($this->addon->settings->sp_location_item) && $location_count){
             $latSum =0;
@@ -45,7 +60,8 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
             $cordints .= ']';
             $centr = "[".$latSum/$location_count.",".$lngSum/$location_count."]";
         }
-        $js = "window.addEventListener('load', function() {      
+        $js = "window.addEventListener('load', function() {   
+           document.getElementById(\"".$this->map_id."\").style.height = \"".$height."\";   
            var mymap = L.map('".$this->map_id."').setView(".$centr.", ".$map_zoom.");
            let maptypes ={
             'Default':'{s}.tile.osm.org',
@@ -56,7 +72,8 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
            L.tileLayer('https://'+maptypes['".$selectedmaptype."']+'/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>',    
             }).addTo(mymap);
-            var marker = L.marker(".$centr.").addTo(mymap);
+            var greenIcon = L.icon({".$icon."});
+            var marker = L.marker(".$centr.", {icon: greenIcon}).addTo(mymap);
             var polygon = L.polygon(".$cordints."
             , {
             color: '".$bound_color."',
@@ -86,19 +103,7 @@ class SppagebuilderAddonPolygon_addon extends SppagebuilderAddons {
 
         $css = '';
 
-        if($height){
-            $css .= $addon_id . '{' . $height . '}';
-        }
-        if($height_sm){
-            $css .= '@media (min-width: 768px) and (max-width: 991px) {';
-            $css .= $addon_id . '{' . $height_sm . '}';
-            $css .= '}';
-        }
-        if($height_xs){
-            $css .= '@media (min-width: 768px) and (max-width: 991px) {';
-            $css .= $addon_id . '{' . $height_xs . '}';
-            $css .= '}';
-        }
+
 
         return $css;
     }

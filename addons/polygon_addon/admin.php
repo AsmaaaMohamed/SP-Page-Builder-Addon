@@ -20,7 +20,7 @@ SpAddonsConfig::addonConfig(
         'addon_name'=>'polygon_addon',
         'title'=> JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_ADDON_TITLE'),
         'desc'=> JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_ADDON_DESC'),
-        'icon'=>JURI::root() . 'plugins/sppagebuilder/advancedmaps/addons/polygon_addon/assets/images/icon.png',
+        'icon'=>JURI::root() . 'plugins/sppagebuilder/advancedmaps/addons/assets/images/icon.png',
         'category'=>'JoomReem Addons',
         'attr'=>array(
             'general' => array(
@@ -81,6 +81,22 @@ SpAddonsConfig::addonConfig(
                         'Dark'=>'Dark Matter map',
                     ),
                     'std'=>'Default',
+                ),
+                'map_marker'=>array(
+                    'type'=>'select',
+                    'title'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_MARKER'),
+                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_MARKER_DESC'),
+                    'values'=>array(
+                        'leaf-blue'=>'Leaf Blue',
+                        'leaf-red'=>'Leaf Red',
+                        'leaf-orange'=>'Leaf Orange',
+                        'leaf-green'=>'Leaf Green',
+                        'marker-yellow'=>'Marker Yellow',
+                        'marker-red'=>'Marker Red',
+                        'marker-green'=>'Marker Green',
+                        'marker-blue'=>'Marker Blue',
+                    ),
+                    'std'=>'marker-blue',
                 ),
                 'sp_location_item'=>array(
                     'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_POLYGON_TITLE'),
