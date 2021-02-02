@@ -55,8 +55,8 @@ SpAddonsConfig::addonConfig(
                 ),
                 'popup_info'=>array(
                     'type'=>'text',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADDON_POPUP_INFO_DESC'),
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADDON_POPUP_INFO'),
+                    'desc'=>JText::_('PLG_SPPAGEBUILDER_ADDON_POPUP_INFO_DESC'),
                     'std'=> ''
                 ),
                 'bound_color'=>array(
@@ -71,8 +71,8 @@ SpAddonsConfig::addonConfig(
                 ),
                 'map_type'=>array(
                     'type'=>'select',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_TYPE'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_TYPE_DESC'),
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_TYPE'),
+                    'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_TYPE_DESC'),
                     'values'=>array(
                         'Default'=>'Default',
                         'OpenCycleMap'=>'OpenCycleMap',
@@ -84,8 +84,8 @@ SpAddonsConfig::addonConfig(
                 ),
                 'map_marker'=>array(
                     'type'=>'select',
-                    'title'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_MARKER'),
-                    'desc'=>JText::_('COM_SPPAGEBUILDER_ADVANCED_MAPS_MARKER_DESC'),
+                    'title'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_MARKER'),
+                    'desc'=>JText::_('PLG_SPPAGEBUILDER_ADVANCED_MAPS_MARKER_DESC'),
                     'values'=>array(
                         'leaf-blue'=>'Leaf Blue',
                         'leaf-red'=>'Leaf Red',
